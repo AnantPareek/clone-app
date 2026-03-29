@@ -1,0 +1,85 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["partialIndexes"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model EventType {
+  id                    Int                   @id @default(autoincrement())
+  title                 String
+  description           String?
+  duration              Int
+  slug                  String                @unique
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+  bookingQuestions      Json?                 @default("[]")
+  availabilitySchedules AvailabilitySchedule?
+  bookings              Booking[]
+}
+
+model Booking {
+  id                 Int       @id @default(autoincrement())
+  eventTypeId        Int
+  name               String
+  email              String
+  status             String    @default("booked")
+  createdAt          DateTime  @default(now())
+  startAt            DateTime
+  endAt              DateTime
+  timezone           String
+  cancelledAt        DateTime?
+  cancellationReason String?
+  updatedAt          DateTime  @updatedAt
+  responses          Json?     @default("{}")
+  eventType          EventType @relation(fields: [eventTypeId], references: [id], onDelete: Cascade)
+
+  @@unique([eventTypeId, startAt], map: "Booking_active_slot_unique", where: raw("(status <> 'cancelled'::text)"))
+  @@index([eventTypeId, startAt])
+  @@index([status, startAt])
+}
+
+model AvailabilitySchedule {
+  id            Int                @id @default(autoincrement())
+  eventTypeId   Int                @unique(map: "AvailabilitySchedule_default_eventType_unique", where: raw("(\"isDefault\" = true)"))
+  name          String
+  timezone      String
+  isDefault     Boolean            @default(false)
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  rules         AvailabilityRule[]
+  eventType     EventType          @relation(fields: [eventTypeId], references: [id], onDelete: Cascade)
+  dateOverrides DateOverride[]
+
+  @@index([eventTypeId])
+  @@index([eventTypeId, isDefault])
+}
+
+model AvailabilityRule {
+  id         Int                  @id @default(autoincrement())
+  scheduleId Int
+  dayOfWeek  Int
+  startTime  String
+  endTime    String
+  createdAt  DateTime             @default(now())
+  updatedAt  DateTime             @updatedAt
+  schedule   AvailabilitySchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+
+  @@index([scheduleId, dayOfWeek])
+}
+
+model DateOverride {
+  id            Int                  @id @default(autoincrement())
+  scheduleId    Int
+  date          DateTime
+  startTime     String?
+  endTime       String?
+  isUnavailable Boolean              @default(false)
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+  schedule      AvailabilitySchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+
+  @@index([scheduleId, date])
+}

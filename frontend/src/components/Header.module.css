@@ -1,0 +1,175 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: 80px; /* Taller header to match the reference */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.scrolled {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--color-gray-100);
+}
+
+.headerContainer {
+  height: 100%;
+  width: 100%;
+  max-width: 1260px; /* Aligned with the stretched main container */
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px; /* Larger logo to match reference prominence */
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.04em;
+}
+
+.logo span {
+  color: #4B5563; /* Lighter '.com' as seen in some versions */
+}
+
+.nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+  }
+}
+
+.navList {
+  display: flex;
+  gap: 32px; /* Generous spacing like in the reference */
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151; /* Cal.com Nav Gray */
+  transition: all 0.2s;
+  border: none;
+  background: none;
+}
+
+.navLink:hover {
+  color: #111827;
+}
+
+.navLinkFlat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navLinkFlat:hover {
+  color: #111827;
+}
+
+.authGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.loginBtn {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-600);
+  padding: 8px 12px;
+  transition: all 0.2s;
+  border: none;
+}
+
+.loginBtn:hover {
+  color: var(--color-gray-900);
+}
+
+.signupBtn {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #111827; /* Darkest gray/black */
+  color: var(--color-white);
+  padding: 8px 18px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.signupBtn span {
+  color: #9CA3AF; /* Lighter chevron color like in the reference */
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 2px;
+}
+
+.signupBtn:hover {
+  background-color: #1F2937;
+}
+
+.mobileMenuBtn {
+  display: none;
+  color: var(--color-gray-900);
+}
+
+@media (max-width: 1024px) {
+  .mobileMenuBtn {
+    display: flex;
+  }
+
+  .navOpen {
+    display: flex !important;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid var(--color-gray-200);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-md);
+  }
+
+  .navOpen .navList {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .navOpen .navItem {
+    width: 100%;
+  }
+
+  .navOpen .navLink,
+  .navOpen .navLinkFlat {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
