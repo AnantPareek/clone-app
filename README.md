@@ -1,12 +1,12 @@
-# CalSync — Enterprise Scheduling Platform
+# Cal.com Clone — Enterprise-Grade Scheduling Platform
 
-CalSync is a high-performance, full-stack scheduling and booking application designed to streamline appointment management. Inspired by enterprise solutions like Cal.com, CalSync offers a seamless interface for hosts to manage their availability and for clients to book time slots with precision and ease.
+This project is a high-performance, full-stack scheduling and booking application designed as a high-fidelity clone of Cal.com. It replicates the core user experience and administrative functionality of the original platform, offering a seamless interface for hosts to manage their availability and for clients to book precision time slots.
 
 ---
 
 ## 🏗️ Technical Architecture
 
-CalSync is built on a modern, scalable architecture that separates concerns between a reactive frontend and a robust, schema-driven backend.
+This Cal.com Clone is built on a modern, scalable architecture that separates concerns between a reactive frontend and a robust, schema-driven backend.
 
 ### Frontend: Modular & Reactive UI
 The frontend is developed using **React.js** (via Vite) and **Tailwind CSS**, prioritizing both performance and user experience. 
@@ -25,19 +25,19 @@ The backend is a **Node.js/Express** server powered by the **Prisma ORM** and a 
 ## 🚀 Core Features
 
 ### 📅 Advanced Availability Management
-CalSync goes beyond simple "working hours." 
+The platform goes beyond simple "working hours" to provide enterprise-level scheduling:
 - **Global Availability Rules**: Define recurring weekly schedules that adapt to the host's primary timezone.
 - **Granular Date Overrides**: The system supports specific date-level overrides, allowing hosts to mark themselves as unavailable or set custom hours for specific days without altering their master schedule.
 
 ### 🔗 Dynamic Booking Flow
-The public-facing booking experience is optimized for conversion:
+The public-facing booking experience is optimized for conversion and follows Cal.com's signature layout:
 1. **Discovery**: Clients visit a unique landing page showcasing available event types.
 2. **Selection**: A high-fidelity calendar interface displays real-time slot availability.
 3. **Registration**: Customizable booking forms collect necessary client information (backed by JSONB storage).
 4. **Validation**: The backend performs a final check before confirmation to prevent double-booking.
 
 ### 🌍 Timezone Synchronization
-Built for a global workforce, CalSync automatically detects and translates timezones. Whether a host is in New York and a client is in Tokyo, the system ensures both parties see the correct local times, handled via standardized IANA timezone identifiers.
+Built for a global workforce, the application automatically detects and translates timezones. Whether a host is in New York and a client is in Tokyo, the system ensures both parties see the correct local times, handled via standardized IANA timezone identifiers.
 
 ---
 
@@ -63,7 +63,7 @@ Built for a global workforce, CalSync automatically detects and translates timez
 ### 1. Database Initialization
 Create your PostgreSQL database:
 ```bash
-createdb calsync_db
+createdb calcom_clone_db
 ```
 
 ### 2. Backend Configuration
