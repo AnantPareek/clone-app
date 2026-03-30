@@ -96,6 +96,17 @@ createdb calcom_clone_db
 ---
 
 ## 🛣️ Roadmap & Limitations
-- **Cross-Event Buffers**: Future support for global overlap prevention across multiple hosts.
-- **External Integration**: API hooks for Google/Outlook Calendar synchronization.
-- **Authentication**: Implementing OIDC/SSO for enterprise-grade dashboard security.
+
+While the current version of the **Cal.com Clone** provides a robust foundation for scheduling, several enterprise-level features are planned for future iterations:
+
+### 🛠️ Current Technical Limitations
+- **Intra-Event Conflict Handling**: Currently, the system prevents double-booking within the *same* event type. However, it does not yet perform cross-event collision detection (e.g., a booking in "30 Min Meeting" won't automatically block the same slot in "1 Hour Consultation").
+- **Stateless Authentication**: The administrative dashboard currently operates on an implicit host model. Production-ready authentication (JWT/OAuth) is required for multi-user support.
+- **Notification Placeholders**: Success messages and cancellation alerts are currently UI-only; the backend logic for SMTP or SMS integration is architected but not yet connected to a provider.
+
+### 🌟 Future Roadmap
+- **Global Availability Engine**: Implementing a unified scheduling service that checks for conflicts across all event types and external calendar feeds simultaneously.
+- **Two-Way Calendar Sync**: Integration with **Google Calendar API** and **Microsoft Graph** to allow for real-time synchronization of "Busy" slots from personal calendars.
+- **Advanced Participant Management**: Support for collective bookings (multiple hosts), round-robin scheduling, and automated "buffer times" before and after meetings.
+- **Enterprise Security**: Role-Based Access Control (RBAC) and Single Sign-On (SSO) integration for organizational management.
+- **Analytics & Conversion Tracking**: A dedicated dashboard for hosts to track booking volume, peak times, and conversion rates from public links.
