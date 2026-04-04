@@ -110,11 +110,11 @@ export default function CreateEventTypeModal({ isOpen, onClose, onSuccess }: Cre
               <label className="text-[13px] font-bold text-neutral-900 uppercase tracking-wider flex items-center justify-between">
                 <span>URL Slug</span>
                 {slug && (
-                  <span className="text-neutral-400 font-normal lowercase">calSync.app/ {slug}</span>
+                  <span className="text-neutral-400 font-normal lowercase">CalSync.app/ {slug}</span>
                 )}
               </label>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 select-none">cal.com/</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 select-none">CalSync.app/</span>
                 <input
                   type="text"
                   placeholder="my-event-link"

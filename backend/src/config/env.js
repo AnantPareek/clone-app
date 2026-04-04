@@ -21,6 +21,10 @@ const env = {
   port,
   databaseUrl: getRequiredEnv("DATABASE_URL"),
   frontendUrl: process.env.FRONTEND_URL ?? "",
+  frontendOrigins: (process.env.FRONTEND_URL ?? "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
 };
 
 export default env;

@@ -7,9 +7,11 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
+    "build": "npx prisma generate && npx prisma migrate deploy",
     "prisma:migrate": "prisma migrate dev",
     "prisma:validate": "prisma validate",
     "prisma:generate": "prisma generate",
+    "prisma:deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
     "seed": "node prisma/seed.js",
     "test:checklist": "node scripts/backend-checklist-test.js"

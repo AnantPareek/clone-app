@@ -1,48 +1,30 @@
-import { Info } from 'lucide-react'
+import React from 'react'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
+import NotificationBar from '../components/landing/NotificationBar'
 import TrustedBy from '../components/landing/TrustedBy'
 import HowItWorks from '../components/landing/HowItWorks'
-import BenefitsIntro from '../components/landing/BenefitsIntro'
-import BenefitsGrid from '../components/landing/BenefitsGrid'
-import MoreFeaturesGrid from '../components/landing/MoreFeaturesGrid'
+import DashboardCTA from '../components/landing/DashboardCTA'
 import Testimonials from '../components/landing/Testimonials'
-import AppStoreShowcase from '../components/landing/AppStoreShowcase'
-import WallOfLove from '../components/landing/WallOfLove'
-import FinalCta from '../components/landing/FinalCta'
 import Footer from '../components/landing/Footer'
 
-export default function LandingPage() {
+const LandingPage: React.FC = () => {
   return (
-    <div className="pageWrapper">
+    <div className="min-h-screen bg-surface font-body">
       <Header />
+      
+      <main className="pt-16">
+        <NotificationBar />
+        <Hero />
+        <TrustedBy />
+        <HowItWorks />
+        <DashboardCTA />
+        <Testimonials />
+      </main>
 
-      <div className="mainContainer">
-        <div className="banner">
-          <div className="bannerContent">
-            <Info size={16} />
-            <span>Moving from Clockwise? - Set a priority call with our team today!</span>
-          </div>
-          <a href="#demo" className="bannerBtn">
-            Book a demo &gt;
-          </a>
-        </div>
-
-        <main>
-          <Hero />
-          <TrustedBy />
-          <HowItWorks />
-          <BenefitsIntro />
-          <BenefitsGrid />
-          <MoreFeaturesGrid />
-          <Testimonials />
-          <AppStoreShowcase />
-          <WallOfLove />
-        </main>
-      </div>
-
-      <FinalCta />
       <Footer />
     </div>
   )
 }
+
+export default LandingPage

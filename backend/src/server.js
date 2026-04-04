@@ -1,12 +1,17 @@
 import app from "./app.js";
 import prisma from "./lib/prisma.js";
 
-// ✅ MUST use Render's PORT
-const PORT = process.env.PORT || 5000;
+import env from "./config/env.js";
 
-const server = app.listen(PORT, () => {
+// ✅ Use central port configuration
+const PORT = env.port;
+
+const server = app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// ✅ Keep event loop alive if app.listen returns for any reason (safety check)
+setInterval(() => {}, 1 << 30);
 
 // Graceful shutdown
 async function shutdown(signal) {

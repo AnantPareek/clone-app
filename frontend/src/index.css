@@ -1,160 +1,86 @@
 @import "tailwindcss";
 
-:root {
-  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-  
-  /* Colors */
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-brand: #2944f3;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
-  
-  /* Spacing */
-  --space-0: 0px;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-12: 48px;
-  --space-16: 64px;
-  
-  /* Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+@theme {
+  --color-on-secondary: #ffffff;
+  --color-background: #f9f9f9;
+  --color-surface-bright: #f9f9f9;
+  --color-on-surface: #1a1c1c;
+  --color-tertiary-fixed-dim: #c7c6c6;
+  --color-surface-dim: #dadada;
+  --color-tertiary-fixed: #e3e2e2;
+  --color-on-secondary-container: #656464;
+  --color-primary: #000000;
+  --color-surface-container-highest: #e2e2e2;
+  --color-on-error: #ffffff;
+  --color-on-tertiary-fixed-variant: #464747;
+  --color-error: #ba1a1a;
+  --color-surface-container-low: #f3f3f3;
+  --color-on-error-container: #93000a;
+  --color-on-secondary-fixed: #1b1c1c;
+  --color-secondary: #5f5e5e;
+  --color-primary-fixed-dim: #c8c6c5;
+  --color-surface-tint: #5f5e5e;
+  --color-on-primary-fixed: #1c1b1b;
+  --color-outline: #747878;
+  --color-error-container: #ffdad6;
+  --color-surface-variant: #e2e2e2;
+  --color-on-background: #1a1c1c;
+  --color-on-primary-fixed-variant: #474646;
+  --color-on-primary-container: #858383;
+  --color-surface-container-lowest: #ffffff;
+  --color-secondary-fixed: #e4e2e1;
+  --color-secondary-fixed-dim: #c8c6c5;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed: #e5e2e1;
+  --color-inverse-surface: #2f3131;
+  --color-surface-container-high: #e8e8e8;
+  --color-outline-variant: #c4c7c7;
+  --color-tertiary: #000000;
+  --color-on-tertiary-container: #848484;
+  --color-surface-container: #eeeeee;
+  --color-on-secondary-fixed-variant: #474746;
+  --color-on-tertiary-fixed: #1b1c1c;
+  --color-on-tertiary: #ffffff;
+  --color-on-surface-variant: #444748;
+  --color-secondary-container: #e4e2e1;
+  --color-tertiary-container: #1b1c1c;
+  --color-surface: #f9f9f9;
+  --color-inverse-primary: #c8c6c5;
+  --color-primary-container: #1c1b1b;
+  --color-inverse-on-surface: #f1f1f1;
+  --color-brand-blue: #3b82f6;
+
+  --font-headline: "Inter", "sans-serif";
+  --font-body: "Inter", "sans-serif";
+  --font-label: "Inter", "sans-serif";
+
+  --radius-default: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-xxl: 2.5rem;
   --radius-full: 9999px;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-
-  /* App shell (Cal-like) */
-  --app-sidebar-bg: #101010;
-  --app-sidebar-border: #262626;
-  --app-sidebar-text: #a3a3a3;
-  --app-sidebar-text-active: #fafafa;
-  --app-main-bg: #f4f4f5;
-  --app-card-bg: #ffffff;
-  --app-card-border: #e4e4e7;
-
-  /* Marketing / Cal.com reference */
-  --page-bg: #f9f9f9;
-  --cal-navy: #1e3a5f;
-  --header-pill-shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 12px rgb(0 0 0 / 0.04);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer base {
+  body {
+    @apply bg-surface text-on-surface selection:bg-primary selection:text-white;
+    font-family: 'Inter', sans-serif;
+  }
 
-body {
-  font-family: var(--font-inter);
-  background-color: var(--page-bg);
-  color: var(--color-gray-900);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-.pageWrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--page-bg);
-}
-
-.mainContainer {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-200);
-  border-radius: 1.5rem;
-  box-shadow:
-    0 1px 2px rgb(0 0 0 / 0.04),
-    0 12px 24px -8px rgb(0 0 0 / 0.08);
-  width: calc(100% - 32px);
-  max-width: 1260px;
-  margin: 5.5rem auto 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-@media (max-width: 640px) {
-  .mainContainer {
-    width: calc(100% - 16px);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4.5rem;
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
   }
 }
 
-/* Subtle blueprint grid (e.g. testimonials) */
-.bg-grid-faint {
-  background-color: var(--page-bg);
-  background-image:
-    linear-gradient(to right, rgb(0 0 0 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(0 0 0 / 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: center top;
-}
+@layer utilities {
+  .text-wall {
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+  }
 
-
-
-.banner {
-  background-color: #eff6ff;
-  border-bottom: 1px solid #bfdbfe;
-  padding: 14px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.bannerContent {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #1e40af; /* Blue text */
-}
-
-.bannerBtn {
-  display: inline-flex;
-  align-items: center;
-  background-color: #2563eb;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 9999px;
-  font-weight: 600;
-  font-size: 13px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.bannerBtn:hover {
-  background-color: #1d4ed8;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-8);
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-md border border-gray-100;
+  }
 }

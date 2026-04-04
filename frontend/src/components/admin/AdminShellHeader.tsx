@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 const NAV = [
   { label: 'Solutions', href: '/' },
   { label: 'Enterprise', href: '/' },
-  { label: 'Cal.ai', href: '/' },
+  { label: 'Sync.ai', href: '/' },
   { label: 'Pricing', href: '/' },
 ] as const
 
@@ -43,7 +43,7 @@ export default function AdminShellHeader() {
                 <span className="h-2 w-2 rounded-full bg-white" />
               </span>
               <span className="text-lg font-bold tracking-tight">
-                Cal<span className="text-neutral-500">.com</span>
+                CalSync
               </span>
             </Link>
 

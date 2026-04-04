@@ -1,0 +1,16 @@
+{
+  "name": "scaler-project-root",
+  "version": "1.0.0",
+  "description": "CalSync Scheduling Platform - Root Management",
+  "private": true,
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "npx concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "prisma:studio": "cd backend && npm run prisma:studio"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

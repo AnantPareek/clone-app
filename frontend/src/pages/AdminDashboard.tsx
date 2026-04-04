@@ -27,7 +27,7 @@ import CreateEventTypeModal from '../components/dashboard/CreateEventTypeModal'
 import { format } from 'date-fns'
 
 const SURFACE_CLASS =
-  'rounded-[2rem] border border-neutral-200 bg-white shadow-[0_18px_40px_-28px_rgba(15,23,42,0.35),0_2px_8px_rgba(15,23,42,0.06)]'
+  'rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md'
 
 export default function AdminDashboard() {
   const [eventTypes, setEventTypes] = useState<EventType[]>([])
@@ -118,28 +118,25 @@ export default function AdminDashboard() {
   const bookingBaseUrl = typeof window !== 'undefined' ? window.location.origin : ''
 
   return (
-    <div className="mx-auto flex w-full max-w-[1240px] flex-col items-center gap-16 font-inter">
-      <section className="w-full max-w-4xl space-y-8 text-center sm:text-left">
-        <div className="space-y-4">
-          <h1 className="text-6xl font-bold tracking-tight text-[#0f172a] sm:text-7xl">Admin Dashboard</h1>
-          <p className="max-w-3xl text-[2rem] leading-relaxed text-neutral-500">
-            Welcome to your command center. Manage your events, availability, and bookings all in one
-            place.
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 p-6 md:p-10 font-sans text-slate-900">
+      <section className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="space-y-1">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Admin Dashboard</h1>
+          <p className="text-base text-slate-500">
+            Manage your events, availability, and bookings all in one place.
           </p>
         </div>
 
-        <div className="flex justify-center sm:justify-start">
-          <motion.button
-            type="button"
-            onClick={() => setIsCreateModalOpen(true)}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex min-h-[64px] items-center justify-center gap-2 rounded-2xl bg-[#0b1a36] px-8 text-[2rem] font-semibold text-white shadow-[0_16px_28px_-16px_rgba(11,26,54,0.8)] transition-colors hover:bg-[#09162f]"
-          >
-            <Plus size={20} strokeWidth={2.5} />
-            Create New Event
-          </motion.button>
-        </div>
+        <motion.button
+          type="button"
+          onClick={() => setIsCreateModalOpen(true)}
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
+          className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-slate-900 px-4 text-sm font-medium text-white shadow-sm transition-all hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+        >
+          <Plus size={16} strokeWidth={2.5} />
+          Create New Event
+        </motion.button>
       </section>
 
       {loading && !eventTypes.length ? (
@@ -164,9 +161,9 @@ export default function AdminDashboard() {
       ) : (
         <div className="grid w-full grid-cols-1 items-start gap-10 self-stretch xl:grid-cols-3">
           <section className="space-y-4">
-            <div className="flex items-end gap-3">
-              <h2 className="text-5xl font-semibold tracking-tight text-[#0f172a]">My Events</h2>
-              <span className="mb-1 rounded-full bg-neutral-100 px-2.5 py-0.5 text-sm font-semibold text-neutral-600">
+            <div className="flex items-center gap-2 mb-4">
+              <h2 className="text-lg font-semibold text-slate-900 text-wall">My Events</h2>
+              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
                 {eventTypes.length}
               </span>
             </div>
@@ -186,17 +183,17 @@ export default function AdminDashboard() {
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0 space-y-1">
-                      <h3 className="text-[2.35rem] font-semibold leading-tight text-neutral-900">
+                    <div className="min-w-0 space-y-0.5">
+                      <h3 className="text-base font-semibold text-slate-900 truncate">
                         {eventType.title}
                       </h3>
-                      <div className="flex flex-wrap items-center gap-3 text-[1.05rem] font-medium text-neutral-500">
+                      <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-500">
                         <span className="flex items-center gap-1">
-                          <Clock size={13} strokeWidth={2} />
+                          <Clock size={12} strokeWidth={2} />
                           {eventType.duration}m
                         </span>
-                        <span className="flex items-center gap-1 uppercase tracking-wide">
-                          <Globe size={13} strokeWidth={2} />
+                        <span className="flex items-center gap-1 uppercase tracking-wider">
+                          <Globe size={12} strokeWidth={2} />
                           {selectedEvent?.id === eventType.id && availability?.timezone
                             ? availability.timezone
                             : '—'}
@@ -227,22 +224,22 @@ export default function AdminDashboard() {
                       href={`/book/${eventType.slug}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-neutral-100 py-3 text-[1.05rem] font-semibold text-neutral-800 transition-colors hover:bg-neutral-200/80"
+                      className="flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-slate-100 py-2 text-xs font-medium text-slate-900 transition-colors hover:bg-slate-200"
                       onClick={(e) => e.stopPropagation()}
                     >
                       Preview
-                      <ExternalLink size={13} />
+                      <ExternalLink size={12} />
                     </a>
                     <button
                       type="button"
-                      className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-neutral-200 bg-white py-3 text-[1.05rem] font-semibold text-neutral-800 transition-colors hover:bg-neutral-50"
+                      className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-white py-2 text-xs font-medium text-slate-900 transition-colors hover:bg-slate-50"
                       onClick={(e) => {
                         e.stopPropagation()
                         copyLink(eventType.slug)
                       }}
                     >
                       Copy
-                      <Copy size={13} />
+                      <Copy size={12} />
                     </button>
                   </div>
 
@@ -264,9 +261,9 @@ export default function AdminDashboard() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-5xl font-semibold tracking-tight text-[#0f172a]">Availability</h2>
+            <h2 className="text-lg font-semibold text-slate-900 text-wall">Availability</h2>
 
-            <div className={`${SURFACE_CLASS} min-h-[560px] p-6 sm:p-7`}>
+            <div className={`${SURFACE_CLASS} min-h-[500px] p-6`}>
               {eventTypes.length === 0 ? (
                 <div className="flex h-full min-h-[400px] flex-col items-center justify-center gap-3 px-4 text-center">
                   <div className="rounded-2xl border border-dashed border-neutral-200 p-5">
@@ -420,7 +417,7 @@ export default function AdminDashboard() {
           </section>
 
           <section className="space-y-4 xl:sticky xl:top-32">
-            <h2 className="text-5xl font-semibold tracking-tight text-[#0f172a]">Upcoming Bookings</h2>
+            <h2 className="text-lg font-semibold text-slate-900 text-wall">Upcoming Bookings</h2>
 
             <div className="space-y-4">
               {bookings.length > 0 ? (
@@ -428,23 +425,22 @@ export default function AdminDashboard() {
                   <motion.div
                     key={booking.id}
                     layout
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="relative overflow-hidden rounded-[1.85rem] border border-[#1f2f56] bg-[#0b1733] p-6 text-white shadow-[0_20px_34px_-22px_rgba(11,23,51,0.85)]"
+                    className="relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900 p-5 text-white shadow-md transition-shadow hover:shadow-xl"
                   >
-                    <div className="pointer-events-none absolute -right-8 -bottom-8 h-24 w-24 rounded-full bg-blue-400/10 blur-xl" />
                     <div className="relative flex items-start justify-between gap-3">
-                      <div className="min-w-0 space-y-1">
-                        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-400">
+                      <div className="min-w-0 space-y-0.5">
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                           {booking.eventType?.title ?? 'Event'}
                         </p>
-                        <p className="text-3xl font-semibold leading-snug">{booking.name}</p>
+                        <p className="text-lg font-semibold truncate leading-tight">{booking.name}</p>
                       </div>
                       <button
                         type="button"
                         disabled={cancellingId === booking.id}
                         onClick={() => void handleCancelBooking(booking.id)}
-                        className="shrink-0 rounded-xl border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm font-semibold text-red-300 transition-colors hover:bg-red-500/20 hover:text-red-100 disabled:opacity-50"
+                        className="shrink-0 rounded-lg border border-red-500/30 bg-red-500/10 px-2.5 py-1 text-xs font-semibold text-red-400 transition-colors hover:bg-red-500/20 hover:text-red-300 disabled:opacity-50"
                       >
                         {cancellingId === booking.id ? '...' : 'Cancel'}
                       </button>
